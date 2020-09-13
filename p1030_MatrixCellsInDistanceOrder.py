@@ -41,24 +41,38 @@
 #--------------------------------------# 
 
 class Solution:
-    def allCellsDistOrder(self, R: int, C: int, r0: int, c0: int) -> List[List[int]]:
+    def allCellsDistOrder(self, R: int, C: int, r0: int, c0: int):
+        coord =[]
+        dist = []
+    
+        for r1 in range(R):
+            for c1 in range(C):
+                coord.append([r1,c1])
+                distance = abs(r1-r0)+abs(c1-c0)
+                dist.append(distance)
+
+        combo = list(zip(coord,dist))
+        combo.sort(key = lambda x:x[1])
+
+        return [item for item,_ in combo]        
 
 
 #--------------------------------------#
 #              Test Code               #
 #--------------------------------------# 
 
-# API missing
-
 # if __name__ == '__main__':
     
-#     inputs = [[12,345,2,6,7896],[555,901,482,1771]]
-#     answers = [2,1]
+    # R = 1, C = 2, r0 = 0, c0 = 0
 
-#     s = Solution()
 
-#     for i in range(len(inputs)):
-#         output = s.findNumbers(inputs[i])
-#         print(output)
-#         if output != answers[i]:
-#             print('wrong answer. expecting: '+str(answers[i]))
+    # inputs = [[12,345,2,6,7896],[555,901,482,1771]]
+    # answers = [2,1]
+
+    # s = Solution()
+
+    # for i in range(len(inputs)):
+    #     output = s.allCellsDistOrder(inputs[i])
+    #     print(output)
+    #     if output != answers[i]:
+    #         print('wrong answer. expecting: '+str(answers[i]))
